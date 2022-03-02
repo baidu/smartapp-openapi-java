@@ -44,7 +44,7 @@ public class ThirdPartyDomainServiceImpl extends BaseService implements ThirdPar
         params.put("upload_domain", uploadDomain);
         params.put("download_domain", downloadDomain);
         params.put("socket_domain", socketDomain);
-        String response = SmartAppHttpUtil.sendHttpPost(TP_MODIIFY_DOMAIN, params);
+        String response = SmartAppHttpUtil.sendHttpPost(TP_MODIFY_DOMAIN, params);
 
         SmartAppResult<Domains> result = JSONUtil.toBean(response, new TypeReference<SmartAppResult<Domains>>() {
         }.getType(), true);

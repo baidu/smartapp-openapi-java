@@ -303,7 +303,7 @@ public class AppServiceImplTest {
         PowerMockito.mockStatic(SmartAppHttpUtil.class);
         PowerMockito.when(SmartAppHttpUtil.sendHttpPost(anyString(), any())).thenReturn(response);
 
-        appServiceImpl.restart("accessToken");
+        appServiceImpl.resume("accessToken");
     }
 
     @Test

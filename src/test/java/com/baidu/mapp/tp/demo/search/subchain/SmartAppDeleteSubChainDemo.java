@@ -18,9 +18,11 @@ public class SmartAppDeleteSubChainDemo {
         // 开发者在此设置请求参数，实际参数请参考文档说明填写
         // 如果开发者不想传非必需参数，可以将设置该参数的行注释
         String accessToken = "xxx";
+        Long subChainId = 0L;
         List<String> sites = new ArrayList<>();
         try {
-            Boolean bindSite = smartAppThirdPartyClient.getNaturalSearchService().bindSite(accessToken, sites);
+            Boolean deleteSubChain = smartAppThirdPartyClient.getNaturalSearchService()
+                    .deleteSubChain(accessToken, subChainId);
         } catch (SmartAppErrorException | OpenAPIErrorException e) {
             e.printStackTrace();
         }

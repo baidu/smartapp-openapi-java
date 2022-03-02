@@ -1,5 +1,7 @@
 package com.baidu.mapp.developer.api;
 
+import java.util.List;
+
 import com.baidu.mapp.common.SmartAppConstants;
 import com.baidu.mapp.common.error.OpenAPIErrorException;
 import com.baidu.mapp.common.error.SmartAppErrorException;
@@ -108,7 +110,7 @@ public interface PaymentService {
      * @throws SmartAppErrorException 智能小程序异常类
      * @throws OpenAPIErrorException  OpenAPI异常类
      */
-    OrderRefundDetailClient findOrderRefund(String accessToken, String pmAppKey, String tpOrderId, Long userId)
+    List<OrderRefundDetailClient> findOrderRefund(String accessToken, String pmAppKey, String tpOrderId, Long userId)
             throws SmartAppErrorException, OpenAPIErrorException;
 
     /**
