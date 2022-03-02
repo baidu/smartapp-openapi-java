@@ -1,18 +1,17 @@
 package com.baidu.mapp.tp.api.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.baidu.mapp.tp.api.OrderService;
 import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.common.enums.SmartAppErrorCode;
-import com.baidu.mapp.tp.bean.order.OrderCenterCheckParam;
-import com.baidu.mapp.tp.bean.order.Payload;
-import com.baidu.mapp.tp.bean.order.PushOrderResult;
 import com.baidu.mapp.common.error.OpenAPIErrorException;
 import com.baidu.mapp.common.error.SmartAppErrorException;
 import com.baidu.mapp.common.validator.BaiduAssert;
+import com.baidu.mapp.tp.api.OrderService;
+import com.baidu.mapp.tp.bean.order.OrderCenterCheckParam;
+import com.baidu.mapp.tp.bean.order.Payload;
+import com.baidu.mapp.tp.bean.order.PushOrderResult;
 import com.baidu.mapp.util.SmartAppHttpUtil;
 import com.baidu.mapp.util.TimeIntervalAspect;
 
@@ -47,13 +46,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_ADD_MAIN_INFO, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_ADD_MAIN_INFO, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());
@@ -77,13 +74,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_MAIN_INFO, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_MAIN_INFO, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());
@@ -107,13 +102,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_MAIN_STATUS, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_MAIN_STATUS, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());
@@ -137,13 +130,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_APPEND_SUB_INFO, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_APPEND_SUB_INFO, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());
@@ -167,13 +158,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_SUB_INFO, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_SUB_INFO, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());
@@ -197,13 +186,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         params.put("scene_type", param.getSceneType());
         params.put("pm_app_key", param.getPmAppKey());
         params.put("hostname", param.getHostname());
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
+        String body = JSONUtil.toJsonStr(payload);
 
         String response = null;
         try {
-            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_SUB_STATUS, headers, params);
+            response = SmartAppHttpUtil.sendHttpPost(ORDER_UPDATE_SUB_STATUS, params, body);
         } catch (Exception e) {
             throw new SmartAppErrorException(SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getCode(),
                     SmartAppErrorCode.THIRD_SERVER_UNKNOWN_FAIL.getMsg());

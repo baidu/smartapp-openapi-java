@@ -1,15 +1,14 @@
 package com.baidu.mapp.tp.api.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.baidu.mapp.common.SmartAppResult;
+import com.baidu.mapp.common.enums.SmartAppErrorCode;
 import com.baidu.mapp.common.error.OpenAPIErrorException;
 import com.baidu.mapp.common.error.SmartAppErrorException;
 import com.baidu.mapp.common.validator.BaiduAssert;
 import com.baidu.mapp.tp.api.PaymentService;
-import com.baidu.mapp.common.enums.SmartAppErrorCode;
 import com.baidu.mapp.tp.bean.payment.ApplyOrderRefundClient;
 import com.baidu.mapp.tp.bean.payment.ApplyOrderRefundResponseClient;
 import com.baidu.mapp.tp.bean.payment.BillListClient;
@@ -411,18 +410,19 @@ public class PaymentServiceImpl extends BaseService implements PaymentService {
             throw new SmartAppErrorException(SmartAppErrorCode.ERRNO_PARAM_INVALID.getCode(),
                     SmartAppErrorCode.ERRNO_PARAM_INVALID.getMsg());
         }
-        Map<String, Object> body = new HashMap<>();
-        body.put("applyRefundMoney", applyOrderRefundClient.getApplyRefundMoney());
-        body.put("bizRefundBatchId", applyOrderRefundClient.getBizRefundBatchId());
-        body.put("isSkipAudit", applyOrderRefundClient.getIsSkipAudit());
-        body.put("orderId", applyOrderRefundClient.getOrderId());
-        body.put("refundReason", applyOrderRefundClient.getRefundReason());
-        body.put("refundType", applyOrderRefundClient.getRefundType());
-        body.put("tpOrderId", applyOrderRefundClient.getTpOrderId());
-        body.put("userId", applyOrderRefundClient.getUserId());
-        body.put("refundNotifyUrl", applyOrderRefundClient.getRefundNotifyUrl());
-        String requestBody = JSONUtil.toJsonStr(body);
-        String response = SmartAppHttpUtil.sendHttpPost(TP_PAY_PAYMENT_SERVICE_APPLY_ORDER_REFUND, params, requestBody);
+        params.put("applyRefundMoney", applyOrderRefundClient.getApplyRefundMoney());
+        params.put("bizRefundBatchId", applyOrderRefundClient.getBizRefundBatchId());
+        params.put("isSkipAudit", applyOrderRefundClient.getIsSkipAudit());
+        params.put("orderId", applyOrderRefundClient.getOrderId());
+        params.put("refundReason", applyOrderRefundClient.getRefundReason());
+        params.put("refundType", applyOrderRefundClient.getRefundType());
+        params.put("tpOrderId", applyOrderRefundClient.getTpOrderId());
+        params.put("userId", applyOrderRefundClient.getUserId());
+        params.put("refundNotifyUrl", applyOrderRefundClient.getRefundNotifyUrl());
+        if (applyOrderRefundClient.getDealVos() != null) {
+            params.put("dealVos", applyOrderRefundClient.getDealVos());
+        }
+        String response = SmartAppHttpUtil.sendHttpPost(TP_PAY_PAYMENT_SERVICE_APPLY_ORDER_REFUND, params);
 
         SmartAppResult<ApplyOrderRefundResponseClient> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<ApplyOrderRefundResponseClient>>() {
@@ -433,7 +433,8 @@ public class PaymentServiceImpl extends BaseService implements PaymentService {
     }
 
     @Override
-    public OrderRefundDetailClient findOrderRefund(String accessToken, String pmAppKey, String tpOrderId, Long userId)
+    public List<OrderRefundDetailClient> findOrderRefund(String accessToken, String pmAppKey, String tpOrderId,
+                                                         Long userId)
             throws SmartAppErrorException, OpenAPIErrorException {
         Map<String, Object> params = getRequestMapper(accessToken);
         params.put("pmAppKey", pmAppKey);
@@ -441,8 +442,8 @@ public class PaymentServiceImpl extends BaseService implements PaymentService {
         params.put("userId", userId);
         String response = SmartAppHttpUtil.sendHttpGet(TP_PAY_PAYMENT_SERVICE_FIND_ORDER_REFUND, params);
 
-        SmartAppResult<OrderRefundDetailClient> result = JSONUtil.toBean(response,
-                new TypeReference<SmartAppResult<OrderRefundDetailClient>>() {
+        SmartAppResult<List<OrderRefundDetailClient>> result = JSONUtil.toBean(response,
+                new TypeReference<SmartAppResult<List<OrderRefundDetailClient>>>() {
                 }.getType(), true);
 
         BaiduAssert.error(result, response);

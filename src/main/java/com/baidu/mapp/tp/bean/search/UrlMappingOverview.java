@@ -24,7 +24,7 @@ public class UrlMappingOverview {
      */
     private Integer ruleRemainingNum;
     /**
-     * 规则状态
+     * 规则列表
      */
     private List<RuleDetail> ruleDetailList;
 

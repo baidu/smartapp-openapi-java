@@ -188,7 +188,7 @@ public interface AppService {
      * @throws SmartAppErrorException 智能小程序异常类
      * @throws OpenAPIErrorException  OpenAPI异常类
      */
-    void restart(String accessToken) throws SmartAppErrorException, OpenAPIErrorException;
+    void resume(String accessToken) throws SmartAppErrorException, OpenAPIErrorException;
 
     /**
      * 流量下线/开启
