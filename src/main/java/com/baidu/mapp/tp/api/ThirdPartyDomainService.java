@@ -22,7 +22,7 @@ public interface ThirdPartyDomainService {
      * 设置第三方平台服务器域名
      * https://smartprogram.baidu.com/docs/third/domain/set_server/
      */
-    String TP_MODIIFY_DOMAIN = SmartAppConstants.OPEN_API_SMART_APP_URL + "tp/modifydomain";
+    String TP_MODIFY_DOMAIN = SmartAppConstants.OPEN_API_SMART_APP_URL + "tp/modifydomain";
     /**
      * 设置第三方平台业务域名
      * https://smartprogram.baidu.com/docs/third/domain/set_biz/

@@ -525,7 +525,7 @@ public interface PaymentService {
      * @throws SmartAppErrorException 智能小程序异常类
      * @throws OpenAPIErrorException  OpenAPI异常类
      */
-    OrderRefundDetailClient findOrderRefund(String accessToken, String pmAppKey, String tpOrderId, Long userId)
+    List<OrderRefundDetailClient> findOrderRefund(String accessToken, String pmAppKey, String tpOrderId, Long userId)
             throws SmartAppErrorException, OpenAPIErrorException;
 
     /**

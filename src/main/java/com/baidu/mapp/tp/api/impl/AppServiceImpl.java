@@ -140,7 +140,7 @@ public class AppServiceImpl extends BaseService implements AppService {
     }
 
     @Override
-    public void restart(String accessToken) throws SmartAppErrorException, OpenAPIErrorException {
+    public void resume(String accessToken) throws SmartAppErrorException, OpenAPIErrorException {
         Map<String, Object> params = getRequestMapper(accessToken);
         String response = SmartAppHttpUtil.sendHttpPost(TP_APP_RESUME, params);
 
