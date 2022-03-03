@@ -11,10 +11,28 @@ import lombok.Data;
  **/
 @Data
 public class TradeIndustry {
+    /**
+     * 类目名称
+     */
     private String industryName;
+    /**
+     * 类目描述
+     */
     private String permitDesc;
+    /**
+     * 是否需要资质
+     */
     private Integer needPermit;
+    /**
+     * 类目id
+     */
     private Integer industryId;
+    /**
+     * 父类目id
+     */
     private Integer parentIndustryId;
+    /**
+     * 子类目list 3级类目无子类目
+     */
     private List<TradeIndustry> industryList;
 }
