@@ -52,6 +52,7 @@ public interface LoginService {
      */
     SessionKey getSessionKey(String accessToken, String code) throws SmartAppErrorException, OpenAPIErrorException;
 
+
     /**
      * 获取Acesstoken
      * @param clientID
@@ -59,6 +60,7 @@ public interface LoginService {
      * @return
      * @throws GetAccessTokenException
      */
+
     AccessToken getGetAccessToken(String clientID, String clientSecret) throws GetAccessTokenException;
 
 }
