@@ -1,7 +1,9 @@
 package com.baidu.mapp.tp.api.impl;
 
 import java.util.Map;
+import java.util.Objects;
 
+import com.baidu.mapp.common.error.GetAccessTokenException;
 import com.baidu.mapp.tp.api.AuthorizationProcessService;
 import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.tp.bean.auth.AppInfo;
@@ -66,7 +68,7 @@ public class AuthorizationProcessServiceImpl extends BaseService implements Auth
 
     @Override
     public OAuthToken getOAuthToken(String accessToken, String code, String grantType)
-            throws OpenAPIErrorException {
+            throws GetAccessTokenException {
         Map<String, Object> params = getRequestMapper(accessToken);
         params.put("code", code);
         params.put("grant_type", grantType);
@@ -75,13 +77,18 @@ public class AuthorizationProcessServiceImpl extends BaseService implements Auth
         OAuthToken result = JSONUtil.toBean(response, new TypeReference<OAuthToken>() {
         }.getType(), true);
 
-        BaiduAssert.notNull(result, response);
+        if (result == null) {
+            throw new GetAccessTokenException("request access token error!", "");
+        }
+        if (result.getError() != null && !Objects.equals(result.getError(), "")) {
+            throw new GetAccessTokenException(result.getError(), result.getErrorDescription());
+        }
         return result;
     }
 
     @Override
     public OAuthToken refreshOAuthToken(String accessToken, String refreshToken, String grantType)
-            throws OpenAPIErrorException {
+            throws GetAccessTokenException {
         Map<String, Object> params = getRequestMapper(accessToken);
         params.put("refresh_token", refreshToken);
         params.put("grant_type", grantType);
@@ -90,7 +97,12 @@ public class AuthorizationProcessServiceImpl extends BaseService implements Auth
         OAuthToken result = JSONUtil.toBean(response, new TypeReference<OAuthToken>() {
         }.getType(), true);
 
-        BaiduAssert.notNull(result, response);
+        if (result == null) {
+            throw new GetAccessTokenException("request access token error!", "");
+        }
+        if (result.getError() != null && !Objects.equals(result.getError(), "")) {
+            throw new GetAccessTokenException(result.getError(), result.getErrorDescription());
+        }
         return result;
     }
 
