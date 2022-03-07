@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import cn.hutool.core.util.StrUtil;
 import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.common.SmartAppResultC;
 import com.baidu.mapp.common.error.GetAccessTokenException;
@@ -82,6 +81,5 @@ public class LoginServiceImpl extends BaseService implements LoginService {
             throw new GetAccessTokenException(result.getError(), result.getErrorDescription());
         }
         return result;
-
     }
 }

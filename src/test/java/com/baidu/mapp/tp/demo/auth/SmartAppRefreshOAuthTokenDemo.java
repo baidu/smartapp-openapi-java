@@ -1,8 +1,8 @@
 package com.baidu.mapp.tp.demo.auth;
 
+import com.baidu.mapp.common.error.GetAccessTokenException;
 import com.baidu.mapp.tp.SmartAppThirdPartyClient;
 import com.baidu.mapp.tp.bean.auth.OAuthToken;
-import com.baidu.mapp.common.error.OpenAPIErrorException;
 
 /**
  * @description:
@@ -20,7 +20,7 @@ public class SmartAppRefreshOAuthTokenDemo {
         try {
             OAuthToken oAuthToken = smartAppThirdPartyClient.getAuthorizationProcessService().
                     refreshOAuthToken(accessToken, refreshToken, grantType);
-        } catch (OpenAPIErrorException e) {
+        } catch (GetAccessTokenException e) {
             e.printStackTrace();
         }
     }

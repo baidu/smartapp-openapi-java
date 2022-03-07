@@ -11,5 +11,4 @@ public class AccessToken {
     private  String error;
     @Alias("error_description")
     private  String errorDescription;
-
 }
