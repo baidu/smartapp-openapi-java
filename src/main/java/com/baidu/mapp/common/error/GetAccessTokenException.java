@@ -13,5 +13,6 @@ public class GetAccessTokenException extends Exception {
         this.error = error;
         this.errorDescription = error_description;
     }
+
 }
 
