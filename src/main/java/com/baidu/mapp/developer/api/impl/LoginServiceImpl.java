@@ -39,7 +39,6 @@ public class LoginServiceImpl extends BaseService implements LoginService {
         params.put("openid", openId);
 
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_UNION_ID, params);
-        System.out.println(response);
         SmartAppResultC<UnionId> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<UnionId>>() {
                 }.getType(), true);
@@ -54,7 +53,6 @@ public class LoginServiceImpl extends BaseService implements LoginService {
         Map<String, Object> params = getRequestMapper(accessToken);
         params.put("code", code);
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_SESSIONKEY, params);
-        System.out.println(response);
         SmartAppResultC<SessionKey> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<SessionKey>>() {
                 }.getType(), true);

@@ -1,23 +1,24 @@
 package com.baidu.mapp.developer.api.impl;
 
-import cn.hutool.aop.ProxyUtil;
-import cn.hutool.core.lang.TypeReference;
-import cn.hutool.json.JSONUtil;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.baidu.mapp.common.SmartAppResult;
+import com.baidu.mapp.common.error.OpenAPIErrorException;
+import com.baidu.mapp.common.error.SmartAppErrorException;
+import com.baidu.mapp.common.validator.BaiduAssert;
 import com.baidu.mapp.developer.api.BaseService;
 import com.baidu.mapp.developer.api.OrderService;
-import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.developer.bean.order.MainOrderData;
 import com.baidu.mapp.developer.bean.order.OperationReulst;
 import com.baidu.mapp.developer.bean.order.OrderQuery;
 import com.baidu.mapp.developer.bean.order.SubsOrderData;
-import com.baidu.mapp.common.error.OpenAPIErrorException;
-import com.baidu.mapp.common.error.SmartAppErrorException;
 import com.baidu.mapp.util.SmartAppHttpUtil;
 import com.baidu.mapp.util.TimeIntervalAspect;
-import com.baidu.mapp.common.validator.BaiduAssert;
 
-import java.util.HashMap;
-import java.util.Map;
+import cn.hutool.aop.ProxyUtil;
+import cn.hutool.core.lang.TypeReference;
+import cn.hutool.json.JSONUtil;
 
 public class OrderServiceImpl extends BaseService implements OrderService {
     private static OrderService orderService;
@@ -47,13 +48,11 @@ public class OrderServiceImpl extends BaseService implements OrderService {
         String body = JSONUtil.toJsonStr(mapBody);
         String response = null;
         response = SmartAppHttpUtil.sendHttpPost(ADD_ORDER_INFO, params, body);
-        System.out.println(response);
 
         SmartAppResult<OperationReulst[]> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<OperationReulst[]>>() {
                 }.getType(), true);
 
-        System.out.println(result.getData()[0]);
         BaiduAssert.error(result, response);
         return result.getData();
     }
