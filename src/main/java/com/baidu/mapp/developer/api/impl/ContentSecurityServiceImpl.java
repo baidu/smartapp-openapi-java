@@ -1,21 +1,22 @@
 package com.baidu.mapp.developer.api.impl;
 
+import java.io.File;
+import java.util.Map;
+
+import com.baidu.mapp.common.SmartAppResult;
+import com.baidu.mapp.common.error.OpenAPIErrorException;
+import com.baidu.mapp.common.error.SmartAppErrorException;
+import com.baidu.mapp.common.validator.BaiduAssert;
+import com.baidu.mapp.developer.api.BaseService;
+import com.baidu.mapp.developer.api.ContentSecurityService;
+import com.baidu.mapp.developer.bean.contentsecurity.CommonCheckResult;
+import com.baidu.mapp.util.SmartAppHttpUtil;
+import com.baidu.mapp.util.TimeIntervalAspect;
+
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.baidu.mapp.developer.api.BaseService;
-import com.baidu.mapp.developer.api.ContentSecurityService;
-import com.baidu.mapp.common.SmartAppResult;
-import com.baidu.mapp.developer.bean.contentsecurity.CommonCheckResult;
-import com.baidu.mapp.common.error.OpenAPIErrorException;
-import com.baidu.mapp.common.error.SmartAppErrorException;
-import com.baidu.mapp.util.SmartAppHttpUtil;
-import com.baidu.mapp.util.TimeIntervalAspect;
-import com.baidu.mapp.common.validator.BaiduAssert;
-
-import java.io.File;
-import java.util.Map;
 
 public class ContentSecurityServiceImpl extends BaseService implements ContentSecurityService {
     private static ContentSecurityService contentSecurityService;
@@ -79,7 +80,6 @@ public class ContentSecurityServiceImpl extends BaseService implements ContentSe
         String response = null;
         response = SmartAppHttpUtil.sendHttpPost(CHECK_PATH, params, body);
 
-        System.out.println(response);
         SmartAppResult<String> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<String>>() {
                 }.getType(), true);
@@ -95,7 +95,6 @@ public class ContentSecurityServiceImpl extends BaseService implements ContentSe
 
         String response = null;
         response = SmartAppHttpUtil.sendHttpPost(MISJUDGE_FEEDBACK, params);
-        System.out.println(response);
         SmartAppResult<Object> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<Object>>() {
                 }.getType(), true);

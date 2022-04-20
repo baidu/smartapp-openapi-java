@@ -21,9 +21,9 @@ public interface LoginService {
 
     /**
      * getsessionkey
-     * https://smartprogram.baidu.com/docs/develop/api/open/log_Session-Key/
+     * https://smartprogram.baidu.com/docs/develop/api/open/getSessionKey/
      */
-    String LOGIN_GET_SESSIONKEY = SmartAppConstants.SMART_APP_BASE_URL + "getsessionkey";
+    String LOGIN_GET_SESSIONKEY = SmartAppConstants.OPEN_API_SMART_APP_URL + "getsessionkey";
 
     /**
      * getAccessToken
