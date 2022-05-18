@@ -43,7 +43,7 @@ public class SmartAppAddSubOrderInfoDemo {
         item.setOrderDetail(orderDetail);
 
         SubsOrderEXT.SubsOrder.Refund refund = new SubsOrderEXT.SubsOrder.Refund();
-        refund.setAmount("1000");
+        refund.setAmount(1000);
         SubsOrderEXT.SubsOrder.Refund.Product product = new SubsOrderEXT.SubsOrder.Refund.Product();
         product.setID("101409306478");
         product.setQuantity(1);

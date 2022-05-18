@@ -53,7 +53,7 @@ public class SubsOrderEXT {
         @Data
         public  static  class   Refund {
             @Alias("Amount")
-            private  String  amount;
+            private  int  amount;
 
             @Alias("Product")
             private Product[] product;
