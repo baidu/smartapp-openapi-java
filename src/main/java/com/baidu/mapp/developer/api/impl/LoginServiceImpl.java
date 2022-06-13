@@ -41,7 +41,7 @@ public class LoginServiceImpl extends BaseService implements LoginService {
 
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_UNION_ID, params);
         System.out.println(response);
-        SmartAppResultC<UnionId> result = JSONUtil.toBean(response,
+        SmartAppResult<UnionId> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<UnionId>>() {
                 }.getType(), true);
 
@@ -56,7 +56,7 @@ public class LoginServiceImpl extends BaseService implements LoginService {
         params.put("code", code);
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_SESSIONKEY, params);
         System.out.println(response);
-        SmartAppResultC<SessionKey> result = JSONUtil.toBean(response,
+        SmartAppResult<SessionKey> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<SessionKey>>() {
                 }.getType(), true);
         BaiduAssert.error(result, response);

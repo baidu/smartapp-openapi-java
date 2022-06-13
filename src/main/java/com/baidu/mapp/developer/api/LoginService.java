@@ -23,7 +23,7 @@ public interface LoginService {
      *  getsessionkey
      *  https://smartprogram.baidu.com/docs/develop/api/open/log_Session-Key/
      */
-    String LOGIN_GET_SESSIONKEY = SmartAppConstants.SMART_APP_BASE_URL + "getsessionkey";
+    String LOGIN_GET_SESSIONKEY = SmartAppConstants.OPEN_API_SMART_APP_URL + "getsessionkey";
 
     /**
      * getAccessToken
@@ -33,7 +33,7 @@ public interface LoginService {
 
     /**
      * 获取unionid
-     *
+     * https://smartprogram.baidu.com/docs/develop/api/open/log_getunionid/
      * @param accessToken 授权小程序的接口调用凭据
      * @param openId      用户 openid ，需要经过用户登录授权
      *
@@ -45,6 +45,7 @@ public interface LoginService {
 
     /**
      * 通过code换取sessionkey
+     * https://smartprogram.baidu.com/docs/develop/api/open/getSessionKey/
      * @param accessToken
      * @param code
      * @return
