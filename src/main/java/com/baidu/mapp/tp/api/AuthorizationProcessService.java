@@ -1,5 +1,6 @@
 package com.baidu.mapp.tp.api;
 
+import com.baidu.mapp.common.error.GetAccessTokenException;
 import com.baidu.mapp.tp.bean.auth.AppInfo;
 import com.baidu.mapp.tp.bean.auth.AuthorizationCode;
 import com.baidu.mapp.tp.bean.auth.OAuthToken;
@@ -86,10 +87,10 @@ public interface AuthorizationProcessService {
      *
      * @return openAPI token
      *
-     * @throws OpenAPIErrorException OpenAPI异常类
+     * @throws GetAccessTokenException OpenAPI异常类
      */
     OAuthToken getOAuthToken(String tpAccessToken, String code, String grantType)
-            throws OpenAPIErrorException;
+            throws GetAccessTokenException;
 
     /**
      * 刷新授权小程序的接口调用凭据
@@ -100,10 +101,10 @@ public interface AuthorizationProcessService {
      *
      * @return openAPI token
      *
-     * @throws OpenAPIErrorException OpenAPI异常类
+     * @throws GetAccessTokenException OpenAPI异常类
      */
     OAuthToken refreshOAuthToken(String tpAccessToken, String refreshToken, String grantType)
-            throws OpenAPIErrorException;
+            throws GetAccessTokenException;
 
     /**
      * 获取小程序基础信息

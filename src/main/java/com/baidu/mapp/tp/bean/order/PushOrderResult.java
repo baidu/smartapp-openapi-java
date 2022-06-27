@@ -13,5 +13,4 @@ public class PushOrderResult {
     private String cateId;
     private String resourceId;
     private String rowsAffected;
-    private String subId;
 }

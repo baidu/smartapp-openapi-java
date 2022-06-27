@@ -1,21 +1,22 @@
 package com.baidu.mapp.developer.api.impl;
 
-import cn.hutool.aop.ProxyUtil;
-import cn.hutool.core.lang.TypeReference;
-import cn.hutool.json.JSONUtil;
+import java.util.Map;
+
+import com.baidu.mapp.common.SmartAppResult;
+import com.baidu.mapp.common.error.OpenAPIErrorException;
+import com.baidu.mapp.common.error.SmartAppErrorException;
+import com.baidu.mapp.common.validator.BaiduAssert;
 import com.baidu.mapp.developer.api.BaseService;
 import com.baidu.mapp.developer.api.InteractService;
-import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.developer.bean.interact.CommentCount;
 import com.baidu.mapp.developer.bean.interact.CommentList;
 import com.baidu.mapp.developer.bean.interact.LikeCount;
-import com.baidu.mapp.common.error.OpenAPIErrorException;
-import com.baidu.mapp.common.error.SmartAppErrorException;
 import com.baidu.mapp.util.SmartAppHttpUtil;
 import com.baidu.mapp.util.TimeIntervalAspect;
-import com.baidu.mapp.common.validator.BaiduAssert;
 
-import java.util.Map;
+import cn.hutool.aop.ProxyUtil;
+import cn.hutool.core.lang.TypeReference;
+import cn.hutool.json.JSONUtil;
 
 public class InteractServiceImpl extends BaseService implements InteractService {
     private static InteractService interactService;
@@ -75,7 +76,6 @@ public class InteractServiceImpl extends BaseService implements InteractService 
 
         response = SmartAppHttpUtil.sendHttpPost(COMMENT_LIST, params);
 
-        System.out.println(response);
         SmartAppResult<CommentList> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<CommentList>>() {
                 }.getType(), true);

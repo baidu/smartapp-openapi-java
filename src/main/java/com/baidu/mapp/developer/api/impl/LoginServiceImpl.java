@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import cn.hutool.core.util.StrUtil;
 import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.common.SmartAppResultC;
 import com.baidu.mapp.common.error.GetAccessTokenException;
@@ -40,8 +39,7 @@ public class LoginServiceImpl extends BaseService implements LoginService {
         params.put("openid", openId);
 
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_UNION_ID, params);
-        System.out.println(response);
-        SmartAppResultC<UnionId> result = JSONUtil.toBean(response,
+        SmartAppResult<UnionId> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<UnionId>>() {
                 }.getType(), true);
 
@@ -55,8 +53,7 @@ public class LoginServiceImpl extends BaseService implements LoginService {
         Map<String, Object> params = getRequestMapper(accessToken);
         params.put("code", code);
         String response = SmartAppHttpUtil.sendHttpPost(LOGIN_GET_SESSIONKEY, params);
-        System.out.println(response);
-        SmartAppResultC<SessionKey> result = JSONUtil.toBean(response,
+        SmartAppResult<SessionKey> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<SessionKey>>() {
                 }.getType(), true);
         BaiduAssert.error(result, response);
@@ -82,6 +79,5 @@ public class LoginServiceImpl extends BaseService implements LoginService {
             throw new GetAccessTokenException(result.getError(), result.getErrorDescription());
         }
         return result;
-
     }
 }

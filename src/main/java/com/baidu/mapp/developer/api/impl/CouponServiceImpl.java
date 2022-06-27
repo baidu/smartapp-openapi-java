@@ -1,11 +1,15 @@
 package com.baidu.mapp.developer.api.impl;
 
-import cn.hutool.aop.ProxyUtil;
-import cn.hutool.core.lang.TypeReference;
-import cn.hutool.json.JSONUtil;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.baidu.mapp.common.SmartAppResult;
+import com.baidu.mapp.common.error.OpenAPIErrorException;
+import com.baidu.mapp.common.error.SmartAppErrorException;
+import com.baidu.mapp.common.validator.BaiduAssert;
 import com.baidu.mapp.developer.api.BaseService;
 import com.baidu.mapp.developer.api.CouponService;
-import com.baidu.mapp.common.SmartAppResult;
 import com.baidu.mapp.developer.bean.copuon.BannerInfo;
 import com.baidu.mapp.developer.bean.copuon.BaseInfo;
 import com.baidu.mapp.developer.bean.copuon.BatchGetCouponResult;
@@ -14,15 +18,12 @@ import com.baidu.mapp.developer.bean.copuon.CouponData;
 import com.baidu.mapp.developer.bean.copuon.CouponId;
 import com.baidu.mapp.developer.bean.copuon.CouponTakeId;
 import com.baidu.mapp.developer.bean.copuon.UploadCouponImageResult;
-import com.baidu.mapp.common.error.OpenAPIErrorException;
-import com.baidu.mapp.common.error.SmartAppErrorException;
 import com.baidu.mapp.util.SmartAppHttpUtil;
 import com.baidu.mapp.util.TimeIntervalAspect;
-import com.baidu.mapp.common.validator.BaiduAssert;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import cn.hutool.aop.ProxyUtil;
+import cn.hutool.core.lang.TypeReference;
+import cn.hutool.json.JSONUtil;
 
 public class CouponServiceImpl extends BaseService implements CouponService {
     private static CouponService couponService;
@@ -271,8 +272,6 @@ public class CouponServiceImpl extends BaseService implements CouponService {
         SmartAppResult<CouponData> result = JSONUtil.toBean(response,
                 new TypeReference<SmartAppResult<CouponData>>() {
                 }.getType(), true);
-
-        System.out.println(response);
 
         BaiduAssert.error(result, response);
         return result.getData();
