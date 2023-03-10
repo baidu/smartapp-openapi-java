@@ -15,8 +15,9 @@ public class SmartAppWithdrawAuditDemo {
         // 开发者在此设置请求参数，实际参数请参考文档说明填写
         // 如果开发者不想传非必需参数，可以将设置该参数的行注释
         String accessToken = "xxx";
+        String packageId = "xxx";
         try {
-            smartAppThirdPartyClient.getPackageManagementService().withdrawAudit(accessToken);
+            smartAppThirdPartyClient.getPackageManagementService().withdrawAudit(accessToken, packageId);
         } catch (SmartAppErrorException | OpenAPIErrorException e) {
             e.printStackTrace();
         }

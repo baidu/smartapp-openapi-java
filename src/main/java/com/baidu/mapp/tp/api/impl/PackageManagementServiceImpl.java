@@ -88,8 +88,9 @@ public class PackageManagementServiceImpl extends BaseService implements Package
     }
 
     @Override
-    public void withdrawAudit(String accessToken) throws SmartAppErrorException, OpenAPIErrorException {
+    public void withdrawAudit(String accessToken, String packageId) throws SmartAppErrorException, OpenAPIErrorException {
         Map<String, Object> params = getRequestMapper(accessToken);
+        params.put("package_id", packageId);
         String response = SmartAppHttpUtil.sendHttpPost(TP_PACKAGE_WITHDRAW, params);
 
         SmartAppResult<Void> result = JSONUtil.toBean(response, new TypeReference<SmartAppResult<Void>>() {
