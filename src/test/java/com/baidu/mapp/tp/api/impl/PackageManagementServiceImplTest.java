@@ -100,7 +100,7 @@ public class PackageManagementServiceImplTest {
         PowerMockito.mockStatic(SmartAppHttpUtil.class);
         PowerMockito.when(SmartAppHttpUtil.sendHttpPost(anyString(), any())).thenReturn(response);
 
-        packageManagementServiceImpl.withdrawAudit("accessToken");
+        packageManagementServiceImpl.withdrawAudit("accessToken","packageId");
     }
 
     @Test

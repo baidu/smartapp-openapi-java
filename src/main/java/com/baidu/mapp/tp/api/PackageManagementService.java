@@ -110,11 +110,12 @@ public interface PackageManagementService {
      * 授权小程序撤销审核
      *
      * @param accessToken 授权小程序的接口调用凭据
+     * @param packageId    包 Id ，获取方式请参考[获取小程序包列表](https://smartprogram.baidu.com/docs/third/package/get/)
      *
      * @throws SmartAppErrorException 智能小程序异常类
      * @throws OpenAPIErrorException  OpenAPI异常类
      */
-    void withdrawAudit(String accessToken) throws SmartAppErrorException, OpenAPIErrorException;
+    void withdrawAudit(String accessToken, String packageId) throws SmartAppErrorException, OpenAPIErrorException;
 
     /**
      * 授权小程序发布
